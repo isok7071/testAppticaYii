@@ -5,7 +5,7 @@
 <ol>   
     <li>Склонировать репозиторий</li>
     <li>В корневой папке проекта выполнить: composer install --ignore-platform-reqs (флаг если пишет конфликты)</li>
-    <li>В корневой папке проекта выполнить: init (либо php init)
+    <li>В корневой папке проекта выполнить: init (либо php init) (ДАЛЬШЕ ВАЖНО)
         <ol>
             <li>Which environment do you want the application to be initialized in?: [1] Production </li>
             <li>Initialize the application under 'Production' environment? [yes|no]: yes</li>
