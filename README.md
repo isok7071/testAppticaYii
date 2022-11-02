@@ -1,7 +1,7 @@
 <h1>Делал на php 7.4, dbms - mysql, framework - Yii 2 Advanced</h1>
 <p>Endpoint: http://<домен>/frontend/web/api/appTopCategory?date=2022-10-01</p>
 <p>Дополнительный функционал добавил (логирование запросов на endpoint и ограничение по ip)</p>
-<h2>Установка</h2>
+<h2>Установка (Если какие-то проблемы с установкой, то пишите)</h2>
 <ol>   
     <li>Склонировать репозиторий</li>
     <li>В корневой папке проекта выполнить: composer install --ignore-platform-reqs (флаг если пишет конфликты)</li>
@@ -17,7 +17,8 @@
     <li>Все готово, можно заходить на endpoint (я работал на OpenServer и использовал .htaccess в 'frontend/web/', при таком раскладе все пути работают)</li>
 </ol>
 <p>Конфигурация OpenServer: HTTP(apache_2.4+php 7.2-7.4+nginx), Php 7.4, mysql-8.0 </p>
-
+<hr>
+<br><br>
 
 <p align="center">
     <a href="https://github.com/yiisoft" target="_blank">
