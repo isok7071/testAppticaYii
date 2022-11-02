@@ -5,33 +5,51 @@ namespace frontend\controllers;
 
 use app\models\AppTopCategory;
 use Yii;
-use yii\base\InvalidArgumentException;
-use yii\filters\RateLimiter;
 use yii\httpclient\Client;
-use yii\web\BadRequestHttpException;
 use yii\web\Controller;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 
 
 /**
- * Site controller
+ * Api controller
  */
 class ApiController extends Controller
 {
     /**
-     * {@inheritdoc}
+     * В поведении ограничил запросы с 1 ip до 5 запросов в минуту
+     * использовал thamtech/yii2-ratelimiter-advanced
+     *
+     * @return array[]
      */
     public function behaviors()
     {
         return [
             'rateLimiter' => [
-                'class' => RateLimiter::className(),
-                'user' => new IpLimiter()
-            ],
+                'class' => 'thamtech\ratelimiter\RateLimiter',
+                'components' => [
+                    'rateLimit' => [
+                        'definitions' => [
+                            'ip' => [
+                                'limit' => 5, // allowed hits per window
+                                'window' => 60, // window in seconds
+                                'identifier' => function($context, $rateLimitId) {
+                                    return $context->request->getUserIP();
+                                }
+                            ],
+                        ],
+                    ],
+                    'allowanceStorage' => [
+                        'cache' => 'cache', // use Yii::$app->cache component
+                    ],
+                ],
+                'as rateLimitHeaders' => [
+                    'class' => 'thamtech\ratelimiter\handlers\RateLimitHeadersHandler',
+                    'prefix' => ['X-Rate-Limit-', 'X-RateLimit-'],
+                ],
+                'as retryAfterHeader' => 'thamtech\ratelimiter\handlers\RateLimitHeadersHandler',
+                'as tooManyRequestsException' => 'thamtech\ratelimiter\handlers\TooManyRequestsHttpExceptionHandler',
+            ]
         ];
     }
-
 
     /**
      * Endpoint для получение данных о позициях приложения
@@ -56,8 +74,6 @@ class ApiController extends Controller
         if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$requestedDate)) {
             return json_encode(array('status_code'=>400, 'message'=>'bad date'));
         }
-
-        //TODO написать как это все поднять потом, исправить роут
 
         //Проверяем есть ли уже в базе данных запись
         $appTopCategoryModel = AppTopCategory::find()->where(['date'=>$date])->asArray()->all();
