@@ -1,3 +1,10 @@
+<h1>Делал на php 7.4, dbms - mysql, framework - Yii 2 Advanced</h1>
+<p>Endpoint: http://<домен>/frontend/web/api/appTopCategory?date=2022-10-01</p>
+<p>Дополнительный функционал добавил (логирование запросов на endpoint и ограничение по ip)</p>
+<p>Подробнее в коде</p>
+
+
+
 <p align="center">
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
