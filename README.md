@@ -16,7 +16,7 @@
     <li>После этого в консоли выполнить yii migrate</li>
     <li>Все готово, можно заходить на endpoint (я работал на OpenServer и использовал .htaccess в 'frontend/web/', при таком раскладе все пути работают)</li>
 </ol>
-
+<p>Конфигурация OpenServer: HTTP(apache_2.4+php 7.2-7.4+nginx), Php 7.4, mysql-8.0 </p>
 
 
 <p align="center">
