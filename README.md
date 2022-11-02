@@ -1,7 +1,22 @@
 <h1>Делал на php 7.4, dbms - mysql, framework - Yii 2 Advanced</h1>
 <p>Endpoint: http://<домен>/frontend/web/api/appTopCategory?date=2022-10-01</p>
 <p>Дополнительный функционал добавил (логирование запросов на endpoint и ограничение по ip)</p>
-<p>Подробнее в коде</p>
+<h2>Установка</h2>
+<ol>   
+    <li>Склонировать репозиторий</li>
+    <li>В корневой папке проекта выполнить: composer install --ignore-platform-reqs (флаг если пишет конфликты)</li>
+    <li>В корневой папке проекта выполнить: composer install --ignore-platform-reqs (флаг если пишет конфликты)</li>
+    <li>В корневой папке проекта выполнить: init (либо php init)
+        <ol>
+            <li>Which environment do you want the application to be initialized in?: [1] Production </li>
+            <li>Initialize the application under 'Production' environment? [yes|no]: yes</li>
+            <li>Дальше тут спрашивает перезаписать ли директорию: отвечаем no</li>
+        </ol>
+    </li>
+    <li>Создать базу данных: имя - testapptica, логин:'root', пароль:'' (либо пропишите свой конфиг в 'common/config/main-local.php')</li>
+    <li>После этого в консоли выполнить yii migrate</li>
+    <li>Все готово, можно заходить на endpoint (я работал на OpenServer и использовал .htaccess в 'frontend/web/', при таком раскладе все пути работают)</li>
+</ol>
 
 
 
