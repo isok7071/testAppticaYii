@@ -14,7 +14,7 @@ class m221101_125600_create_app_top_category extends Migration
         $this->createTable('app_top_category', [
             'id' => Schema::TYPE_PK,
             'category' => Schema::TYPE_INTEGER . ' NOT NULL',
-            'position' => Schema::TYPE_BIGINT,
+            'position' => Schema::TYPE_INTEGER,
             'date'=>Schema::TYPE_DATE . ' NOT NULL'
         ]);
         // creates index for column `post_id`

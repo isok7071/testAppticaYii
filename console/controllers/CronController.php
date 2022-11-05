@@ -2,27 +2,20 @@
 
 namespace console\controllers;
 
-use Yii;
 use yii\console\Controller;
 
-class TestController extends Controller{
+class CronController extends Controller{
 
-    public function actionIndex()
+    /** Консольная команда для обновления статистики приложения в топе
+     * по категориям за каждую дату из месячного периода
+     * @return void
+     * @throws \yii\base\InvalidConfigException
+     * @throws \yii\httpclient\Exception
+     */
+    public function actionUpdateAppTopCategory()
     {
-        print( 123);
+        $appTopCategoryUpdater = new \common\models\AppTopCategoryUpdater();
+        $appTopCategoryUpdater->updateAppTopCategoryTable();
     }
 }
-
-/*
- * Надо спарсить все данные за месяц, просто текущий день подставляем туда,
- * они парсятся и попадают в таблицу, потом берем данные с той таблицы и обрабатываем их, вычисляем топ, если нет данных,
- * нужно решить что делать - выдавать ошибку, либо парсить снова так как так бывает ниче не отдает сервак.
- * Когда мы выдали данные все ок,
- * Также нужно сделать чтобы это все отрабатывало через определенный промежуток времени, и заменяло данные в бд.
- *
- * *
- * тогда надо поменять мииграции
- * Пока отключил ratelimiter
- */
-
 ?>
