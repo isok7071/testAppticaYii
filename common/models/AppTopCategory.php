@@ -10,6 +10,7 @@ use yii\httpclient\Client;
  *
  * @property int $id
  * @property int $category
+ * @property int $subcategory
  * @property int|null $position
  * @property string $date
  */
@@ -30,7 +31,7 @@ class AppTopCategory extends \yii\db\ActiveRecord
     {
         return [
             [['category', 'date'], 'required'],
-            [['category', 'position'], 'integer'],
+            [['category','subcategory','position'], 'integer'],
             [['date'], 'safe'],
         ];
     }
@@ -43,6 +44,7 @@ class AppTopCategory extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'category' => 'Category',
+            'subcategory' => 'Subcategory',
             'position' => 'Position',
             'date' => 'Date',
         ];
