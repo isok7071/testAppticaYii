@@ -1,5 +1,5 @@
 <h1>Делал на php 7.4, dbms - mysql, framework - Yii 2 Advanced</h1>
-<p>Endpoint: http://<домен>/frontend/web/api/appTopCategory?date=2022-10-01</p>
+<p>Endpoint: http://<домен>/frontend/web/api/appTopCategory?date=2022-10-20</p>
 <p>Дополнительный функционал добавил (логирование запросов на endpoint и ограничение по ip)</p>
 <h2>Установка (Если какие-то проблемы с установкой, то пишите)</h2>
 <ol>   
@@ -14,6 +14,14 @@
     </li>
     <li>Создать базу данных: имя - testapptica, логин:'root', пароль:'' (либо пропишите свой конфиг в 'common/config/main-local.php')</li>
     <li>После этого в консоли выполнить yii migrate</li>
+    <li>Реализовал переодическое обновление статистики, для того чтобы оно работало нужно создать cron задание с таким содержанием (цифру 2 заменяем на любое другое количество минут):
+    <br>
+    */2 * * * * <путь до исполняемого файла php> <абсолютный путь до проекта>\yii cron/update-app-top-category
+    <br>
+    Я использую OpenServer, поэтому у меня эта команда выглядит так:<br>
+    php c:\OpenServer\domains\testAppticaYiiAdv\yii cron/update-app-top-category
+    <br>
+    </li>
     <li>Все готово, можно заходить на endpoint (я работал на OpenServer и использовал .htaccess в 'frontend/web/', при таком раскладе все пути работают)</li>
 </ol>
 <p>Конфигурация OpenServer: HTTP(apache_2.4+php 7.2-7.4+nginx), Php 7.4, mysql-8.0 </p>
